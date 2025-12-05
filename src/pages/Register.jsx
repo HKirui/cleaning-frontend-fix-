@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 export default function Register() {
@@ -14,7 +14,7 @@ export default function Register() {
     role: "customer",
   });
 
-  const handleChange = (e) => {
+  const handle = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -30,102 +30,88 @@ export default function Register() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-4">Create Account</h2>
+    <div style={styles.container}>
+      <div style={styles.card}>
+        <h2>Create Account</h2>
 
-        <form onSubmit={register} className="space-y-4">
+        <form onSubmit={register} style={styles.form}>
 
-          {/* First Name */}
-          <div>
-            <label className="block mb-1">First Name</label>
-            <input
-              type="text"
-              name="first_name"
-              onChange={handleChange}
-              required
-              className="w-full border p-2 rounded-lg"
-            />
-          </div>
+          <input 
+            name="first_name" 
+            placeholder="First Name" 
+            onChange={handle} required 
+          />
 
-          {/* Last Name */}
-          <div>
-            <label className="block mb-1">Last Name</label>
-            <input
-              type="text"
-              name="last_name"
-              onChange={handleChange}
-              required
-              className="w-full border p-2 rounded-lg"
-            />
-          </div>
+          <input 
+            name="last_name" 
+            placeholder="Last Name" 
+            onChange={handle} required 
+          />
 
-          {/* Email */}
-          <div>
-            <label className="block mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              onChange={handleChange}
-              required
-              className="w-full border p-2 rounded-lg"
-            />
-          </div>
+          <input 
+            type="email"
+            name="email"
+            placeholder="Email"
+            onChange={handle} required 
+          />
 
-          {/* Phone */}
-          <div>
-            <label className="block mb-1">Phone Number</label>
-            <input
-              type="text"
-              name="phone"
-              onChange={handleChange}
-              required
-              className="w-full border p-2 rounded-lg"
-            />
-          </div>
+          <input 
+            name="phone"
+            placeholder="Phone Number"
+            onChange={handle} required 
+          />
 
-          {/* Password */}
-          <div>
-            <label className="block mb-1">Password</label>
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              required
-              className="w-full border p-2 rounded-lg"
-            />
-          </div>
+          <input 
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={handle} required 
+          />
 
-          {/* Role */}
-          <div>
-            <label className="block mb-1">Register As</label>
-            <select
-              name="role"
-              onChange={handleChange}
-              className="w-full border p-2 rounded-lg"
-            >
-              <option value="customer">Customer</option>
-              <option value="cleaner">Cleaner</option>
-            </select>
-          </div>
+          <select name="role" onChange={handle}>
+            <option value="customer">Customer</option>
+            <option value="cleaner">Cleaner</option>
+          </select>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"
-          >
-            Register
-          </button>
+          <button style={styles.button}>Register</button>
         </form>
 
-        {/* Link to Login */}
-        <p className="text-center mt-4">
-          Already have an account?{" "}
-          <Link to="/login" className="text-blue-600 font-semibold">
-            Login here
-          </Link>
+        <p>Already have an account?  
+          <a href="/login"> Login</a>
         </p>
       </div>
     </div>
   );
 }
+
+const styles = {
+  container: {
+    height: "100vh",
+    background: "#f3f6ff",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  card: {
+    width: "90%",
+    maxWidth: "400px",
+    padding: "25px",
+    background: "white",
+    borderRadius: "15px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    textAlign: "center",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "15px",
+  },
+  button: {
+    padding: "10px",
+    background: "#ff69b4",
+    color: "white",
+    border: "none",
+    borderRadius: "12px",
+    cursor: "pointer",
+  },
+};
