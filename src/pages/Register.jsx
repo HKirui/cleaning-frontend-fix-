@@ -69,7 +69,7 @@ const styles = {
     padding: "25px",
     background: "white",
     borderRadius: "15px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    boxShadow: "0 4px 12px rgba(249, 140, 234, 0.1)",
     textAlign: "center"
   },
   form: {

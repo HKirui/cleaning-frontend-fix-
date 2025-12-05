@@ -18,7 +18,7 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
       alert("Login successful!");
-      navigate("/dashboard");
+      navigate("/pages");
 
     } catch (err) {
       alert(err.response?.data?.error || "Login error");
@@ -28,7 +28,7 @@ const Login = () => {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2>Welcome Back</h2>
+        <h2>Welcome Back!</h2>
 
         <form onSubmit={login} style={styles.form}>
           <input placeholder="Email" name="email" type="email" onChange={handle} required />
